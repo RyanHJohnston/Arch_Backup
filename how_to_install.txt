@@ -1,0 +1,12 @@
+# all pacman commands also work for yay packages
+# query all installed packages and write into installed_packages.txt
+echo $(sudo pacman -Q | cut -d ' ' -f 1) > installed_packages.txt 
+
+# install all packages listed in installed_packages.txt
+sudo pacman -S --needed $(cat /path/to/installed_packages.txt)
+
+# list all installed flatpak packages and write to file
+echo $(flatpak list --columns=app) > flatpak_installed_packages.txt
+
+# install all packages listed in flatpak_installed_packages.txt
+cat /path/to/flatpak_installed_packages.txt | xargs flatpak install -y
