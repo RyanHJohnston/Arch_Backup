@@ -2,6 +2,9 @@
 # query all installed packages and write into installed_packages.txt
 echo $(sudo pacman -Q | cut -d ' ' -f 1) > installed_packages.txt 
 
+# query all installed AUR packages and write into yay_packages.txt
+echo $(yay -Qm | cut -d ' ' -f 1) > yay_packages.txt
+
 # install all packages listed in installed_packages.txt
 sudo pacman -S --needed $(cat /path/to/installed_packages.txt)
 
